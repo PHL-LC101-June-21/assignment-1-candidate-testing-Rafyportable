@@ -28,8 +28,8 @@ candidateName = input.question("What is your name? ");
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for(i=0; i <= question.length - 1; i++){
-  candidateAnswer[i] = input.question(question[i]);
+  for(i=0; i < question.length; i++){
+  candidateAnswer[i] = input.question(`${i + 1}) ${question[i]}`);
   }
 
 }
@@ -37,9 +37,7 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  for(i=0; i <= correctAnswer.length - 1; i++){
-    console.log(`Your Answer: ${candidateAnswer[i]}\nCorrect Answer: ${correctAnswer[i]}\n`)
-  }
+  
 
 // if (candidateAnswer === correctAnswer) {
 
@@ -51,8 +49,25 @@ function gradeQuiz(candidateAnswers) {
 
 // }
 
-  let grade;
-  
+  let grade = 0;
+  let points = 0;
+
+  for(i=0; i < correctAnswer.length; i++){
+    console.log(`${i + 1}) ${question[i]}\nYour Answer: ${candidateAnswer[i]}\nCorrect Answer: ${correctAnswer[i]}\n`)
+    if (candidateAnswer[i] === correctAnswer[i].toLowerCase()) {
+      grade += 1;
+      points += 1;
+    }
+  }
+
+  grade = grade / question.length * 100;
+  console.log(`>>> Overall grade: ${grade}% (${points} of 5 responses correct) <<<`);
+
+  if(grade >= 80){
+    console.log(`>>> Status: PASSED <<<`);
+  } else {
+    console.log(`>>> Status: FAILED <<<`);
+  }
 
   return grade;
 }
