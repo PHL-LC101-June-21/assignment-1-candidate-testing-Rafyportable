@@ -21,7 +21,6 @@ let candidateAnswers = [];
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
 
-let input = require('readline-sync');
 candidateName = input.question("What is your name? ");
 
 }
