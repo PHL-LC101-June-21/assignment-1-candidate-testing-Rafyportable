@@ -5,17 +5,17 @@ const input = require('readline-sync');
 // TODO 1.1a: Define candidateName // 
 let candidateName = "";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question = ["Who was the first American woman in space? ",
+let question = "Who was the first American woman in space? ";
+
+let correctAnswer = "Sally Ride";
+let candidateAnswer = "";
+let questions = ["Who was the first American woman in space? ",
 "True or false: 5 kilometer == 5000 meters? ",
 "(5 + 3)/2 * 10 = ? ",
 "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", 
 "What is the minimum crew size for the ISS? "];
-
-let correctAnswer = ["Sally Ride", "true", "40", "Trajectory", "3"];
-let candidateAnswer = [];
-let questions;
-let correctAnswers;
-let candidateAnswers;
+let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
+let candidateAnswers = [];
 
 
 function askForName() {
@@ -28,8 +28,8 @@ candidateName = input.question("What is your name? ");
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for(i=0; i < question.length; i++){
-  candidateAnswer[i] = input.question(`${i + 1}) ${question[i]}`);
+  for(i=0; i < questions.length; i++){
+  candidateAnswers[i] = input.question(`${i + 1}) ${questions[i]}`);
   }
 
 }
@@ -52,15 +52,15 @@ function gradeQuiz(candidateAnswers) {
   let grade = 0;
   let points = 0;
 
-  for(i=0; i < correctAnswer.length; i++){
-    console.log(`${i + 1}) ${question[i]}\nYour Answer: ${candidateAnswer[i]}\nCorrect Answer: ${correctAnswer[i]}\n`)
-    if (candidateAnswer[i] === correctAnswer[i].toLowerCase()) {
+  for(i=0; i < correctAnswers.length; i++){
+    console.log(`${i + 1}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswer[i]}\n`)
+    if (candidateAnswers[i] === correctAnswers[i].toLowerCase()) {
       grade += 1;
       points += 1;
     }
   }
 
-  grade = grade / question.length * 100;
+  grade = grade / questions.length * 100;
   console.log(`>>> Overall grade: ${grade}% (${points} of 5 responses correct) <<<`);
 
   if(grade >= 80){
