@@ -53,7 +53,7 @@ function gradeQuiz(candidateAnswers) {
 
   for(i=0; i < correctAnswers.length; i++){
     console.log(`${i + 1}) ${questions[i]}\nYour Answer: ${String(candidateAnswers[i])}\nCorrect Answer: ${correctAnswers[i]}\n`)
-    if (candidateAnswers[i] === correctAnswers[i].toLowerCase()) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       grade += 1;
       points += 1;
     }
